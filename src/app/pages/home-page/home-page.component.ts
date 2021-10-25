@@ -10,6 +10,43 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 // HomePageComponent convention de nommage PascalCase pour les noms de classe
 export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  homeNavbarData = [
+    {
+      name: "Home",
+      title: "home-page"
+    },
+    {
+      name: "Services",
+      title: "services"
+    },
+    {
+      name: "Features",
+      title: "features"
+    },
+    {
+      name: "Testimonial",
+      title: "testi"
+    },
+    {
+      name: "Team",
+      title: "team"
+    },
+    {
+      name: "Faq",
+      title: "faq"
+    },
+    {
+      name: "Pricing",
+      title: "pricing"
+    },
+    {
+      name: "Contact",
+      title: "contact"
+    },
+
+
+  ]
+
   // variables et functions convention de nomage camelCase
   currentSection = 'home-page';
 

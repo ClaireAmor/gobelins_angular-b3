@@ -8,6 +8,8 @@ import {Component} from '@angular/core';
 
 export class SwitcherComponent {
 
+  isVisible = false;
+
   public windowScroll() :void {
     if (
       document.body.scrollTop > 100 ||
@@ -21,5 +23,12 @@ export class SwitcherComponent {
     }
   }
 
+ clickSettings() {
+   this.isVisible = !this.isVisible;
+ }
 
+ setTheme(theme: string) {
+    // @ts-ignore
+   document.getElementById("color-opt").setAttribute('href', 'assets/css/colors/' + theme + '.css')
+ }
 }

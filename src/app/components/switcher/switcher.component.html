@@ -8,33 +8,33 @@
 
 <!-- Style switcher -->
 <!-- FIXME add condition on style depending on if its open or not-->
-<div id="style-switcher">
+<div id="style-switcher" [style]="isVisible ? 'left:0px' : '-189px'">
     <div>
         <h3>Select your color</h3>
       <!-- FIXME *ngFor with function 's call on click button -->
         <ul class="pattern">
             <li>
-                <a class="color1 pointer-cursor" ></a>
+                <a class="color1 pointer-cursor" (click)="setTheme('default')" ></a>
             </li>
             <li>
-                <a class="color2 pointer-cursor" ></a>
+                <a class="color2 pointer-cursor" (click)="setTheme('pink')" ></a>
             </li>
             <li>
-                <a class="color3 pointer-cursor"></a>
+                <a class="color3 pointer-cursor" (click)="setTheme('yellow')"></a>
             </li>
             <li>
-                <a class="color4 pointer-cursor" ></a>
+                <a class="color4 pointer-cursor" (click)="setTheme('green')" ></a>
             </li>
             <li>
-                <a class="color5 pointer-cursor" ></a>
+                <a class="color5 pointer-cursor" (click)="setTheme('purple')"></a>
             </li>
             <li>
-                <a class="color6 pointer-cursor" ></a>
+                <a class="color6 pointer-cursor" (click)="setTheme('light-blue')"></a>
             </li>
         </ul>
     </div>
     <div class="bottom">
-        <a class="settings pointer-cursor">
+        <a class="settings pointer-cursor" (click)="clickSettings()">
           <i class="ti-settings ti-spin"></i>
         </a>
     </div>

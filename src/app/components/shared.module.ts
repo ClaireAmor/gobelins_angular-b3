@@ -15,6 +15,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { ServicesComponent } from './services/services.component';
 import { CtaComponent } from './cta/cta.component';
 import { TeamComponent } from './team/team.component';
+import { IconsComponent } from './team/icons/icons.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TeamComponent } from './team/team.component';
     PricingComponent,
     ServicesComponent,
     CtaComponent,
-    TeamComponent
+    TeamComponent,
+    IconsComponent
   ],
   imports: [
     CommonModule,
