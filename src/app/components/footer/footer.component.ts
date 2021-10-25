@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  public year = new Date().getFullYear();
+
+  public showTermCondition = true;
+  public termCondition = 'Terms & Conditions';
+  public privacyPolicy = 'Privacy Policy';
+  public contactUs = 'Contact us';
+
   constructor() { }
 
   ngOnInit(): void {

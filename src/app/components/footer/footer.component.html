@@ -15,9 +15,9 @@
         </div>
         <div class="footer-terms">
           <ul class="mb-0 list-inline text-center mt-4 pt-2">
-            <li class="list-inline-item"><a href="#" class="text-muted">Terms & Condition</a></li>
-            <li class="list-inline-item"><a href="#" class="text-muted">Privacy Policy</a></li>
-            <li class="list-inline-item"><a href="#" class="text-muted">Contact Us</a></li>
+            <li *ngIf="showTermCondition" class="list-inline-item"><a href="#" class="text-muted">{{termCondition}}</a></li>
+            <li class="list-inline-item"><a href="#" class="text-muted">{{privacyPolicy}}</a></li>
+            <li class="list-inline-item"><a href="#" class="text-muted">{{contactUs}}</a></li>
           </ul>
         </div>
         <div class="mt-4 pt-2 text-center">
