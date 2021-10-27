@@ -12,31 +12,37 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
 <!--      *ngFor="let item of homeNavbarData"-->
       <ul class="navbar-nav mx-auto" id="navbar-navlist" >
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'home-page'}">
-          <a [ngxScrollTo]="'#home-page'" class="nav-link pointer-cursor">Home</a>
+        <li class="nav-item" *ngFor="let item of homeNavbarData" [ngClass]="{'active':currentSection === item.title">
+          <a [ngxScrollTo]="'#'+item.title" class="nav-link pointer-cursor">{{item.name}}</a>
         </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'services'}">
-          <a [ngxScrollTo]="'#services'" class="nav-link pointer-cursor">Services</a>
-        </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'features'}">
-          <a [ngxScrollTo]="'#features'" class="nav-link pointer-cursor" >Features</a>
-        </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'testi'}">
-          <a [ngxScrollTo]="'#testi'" class="nav-link pointer-cursor" >Client</a>
-        </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'team'}">
-          <a [ngxScrollTo]="'#team'" class="nav-link pointer-cursor" >Team</a>
-        </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'faq'}">
-          <a [ngxScrollTo]="'#faq'" class="nav-link pointer-cursor">FAQ</a>
-        </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'pricing'}">
-          <a [ngxScrollTo]="'#pricing'" class="nav-link pointer-cursor">Pricing</a>
-        </li>
-        <li class="nav-item" [ngClass]="{'active':currentSection === 'contact'}">
-          <a [ngxScrollTo]="'#contact'" class="nav-link pointer-cursor" >Contact</a>
-        </li>
+
       </ul>
+<!--      <ul class="navbar-nav mx-auto" id="navbar-navlist" >-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'home-page'}">-->
+<!--          <a [ngxScrollTo]="'#home-page'" class="nav-link pointer-cursor">Home</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'services'}">-->
+<!--          <a [ngxScrollTo]="'#services'" class="nav-link pointer-cursor">Services</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'features'}">-->
+<!--          <a [ngxScrollTo]="'#features'" class="nav-link pointer-cursor" >Features</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'testi'}">-->
+<!--          <a [ngxScrollTo]="'#testi'" class="nav-link pointer-cursor" >Client</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'team'}">-->
+<!--          <a [ngxScrollTo]="'#team'" class="nav-link pointer-cursor" >Team</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'faq'}">-->
+<!--          <a [ngxScrollTo]="'#faq'" class="nav-link pointer-cursor">FAQ</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'pricing'}">-->
+<!--          <a [ngxScrollTo]="'#pricing'" class="nav-link pointer-cursor">Pricing</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" [ngClass]="{'active':currentSection === 'contact'}">-->
+<!--          <a [ngxScrollTo]="'#contact'" class="nav-link pointer-cursor" >Contact</a>-->
+<!--        </li>-->
+<!--      </ul>-->
       <div>
         <ul class="text-right list-unstyled list-inline mb-0 nav-social">
           <li class="list-inline-item text-white nav-number"><i class="ti-mobile"></i> <span>+1 234 567

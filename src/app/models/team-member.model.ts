@@ -12,7 +12,20 @@ export class TeamMemberModel implements Model{
     this.img = input.img || '';
     this.name = input.name || '';
     this.text = input.text || '';
-    this.links = new TeamMemberLinksModel(input.links || {})
+    this.links = new TeamMemberLinksModel(input.links || {});
     this.isActive = input.isActive || false;
   }
 }
+
+//9.1
+/*
+import {TeamMemberLinksModel} from "./team-member-links.model";
+
+export interface TeamMemberModel {
+  img: string;
+  name: string;
+  text: string;
+  links: TeamMemberLinksModel;
+  isActive?: boolean;
+}
+*/

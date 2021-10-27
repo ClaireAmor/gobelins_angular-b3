@@ -1,7 +1,7 @@
 <div class="">
   <ul class="list-inline team-social mt-4 mb-0">
-    <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
-    <li class="list-inline-item"><a href="#"><i class="ti-skype"></i></a></li>
-    <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+    <li *ngIf="iconList.github" class="list-inline-item"><a href="{{iconList.github}}" target="_blank"><i class="ti-github"></i></a></li>
+    <li *ngIf="iconList.skype" class="list-inline-item"><a href="{{iconList.skype}}" target="_blank"><i class="ti-skype"></i></a></li>
+    <li *ngIf="iconList.twitter" class="list-inline-item"><a href="{{iconList.twitter}}" target="_blank"><i class="ti-twitter-alt"></i></a></li>
   </ul>
 </div>
