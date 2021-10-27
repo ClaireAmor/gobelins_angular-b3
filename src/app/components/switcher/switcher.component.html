@@ -13,24 +13,25 @@
         <h3>Select your color</h3>
       <!-- FIXME *ngFor with function 's call on click button -->
         <ul class="pattern">
-            <li>
-                <a class="color1 pointer-cursor" (click)="setTheme('default')" ></a>
+            <li *ngFor="let theme of themeList; let i=index">
+                <a class="color1 pointer-cursor" [ngClass]="'color' + (i+1)" (click)="setTheme(theme)" ></a>
             </li>
-            <li>
-                <a class="color2 pointer-cursor" (click)="setTheme('pink')" ></a>
-            </li>
-            <li>
-                <a class="color3 pointer-cursor" (click)="setTheme('yellow')"></a>
-            </li>
-            <li>
-                <a class="color4 pointer-cursor" (click)="setTheme('green')" ></a>
-            </li>
-            <li>
-                <a class="color5 pointer-cursor" (click)="setTheme('purple')"></a>
-            </li>
-            <li>
-                <a class="color6 pointer-cursor" (click)="setTheme('light-blue')"></a>
-            </li>
+<!--          Autre solution-->
+<!--            <li>-->
+<!--                <a class="color2 pointer-cursor" (click)="setTheme('pink')" ></a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a class="color3 pointer-cursor" (click)="setTheme('yellow')"></a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a class="color4 pointer-cursor" (click)="setTheme('green')" ></a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a class="color5 pointer-cursor" (click)="setTheme('purple')"></a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a class="color6 pointer-cursor" (click)="setTheme('light-blue')"></a>-->
+<!--            </li>-->
         </ul>
     </div>
     <div class="bottom">
