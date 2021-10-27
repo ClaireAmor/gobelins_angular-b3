@@ -39,7 +39,11 @@ export class SwitcherComponent {
  }
 
  setTheme(theme: string) {
-    // @ts-ignore
-   document.getElementById("color-opt").setAttribute('href', 'assets/css/colors/' + theme + '.css')
+   const color = document.getElementById("color-opt");
+   if (!color) return;
+
+   color.setAttribute('href', 'assets/css/colors/' + theme + '.css')
+
+
  }
 }

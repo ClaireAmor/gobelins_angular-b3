@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'home-page', //selecteur html pour appeler le compo
@@ -9,6 +10,14 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 
 // HomePageComponent convention de nommage PascalCase pour les noms de classe
 export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
+  timerInterval: any;
+  monText1='Prince ali, oui c\'est bien lui Ali a baboua';
+  textH1 = [
+    'A genoux, prosternez vous, soyer ravis',
+    'Pas de panique on se calme ! Criez vive Ali salam !',
+    'Venez assister au plus grand spectacle de l\'Arabi !',
+    this.monText1,
+  ];
 
   homeNavbarData = [
     {
@@ -43,14 +52,12 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
       name: "Contact",
       title: "contact"
     },
-
-
   ]
 
   // variables et functions convention de nomage camelCase
   currentSection = 'home-page';
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {
     // exécuté en premier !
 
     // exemple de log à checker dans la console du navigateur
@@ -61,29 +68,39 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     // exécuté automatiquement à l'initialisation du composant
     // obligatoire si implements OnInit (qui est facultatif)
     // D'autres existent, voir https://angular.io/guide/lifecycle-hooks
-
   }
 
   ngAfterViewInit() {
     // exécuté automatiquement après l'initialisation de la vue
     // obligatoire si implements AfterViewInit (qui est facultatif)
     // D'autres existent, voir https://angular.io/guide/lifecycle-hooks
+
+    const html = document.getElementById('text');
+    if (!html) return;
+    let i = 0;
+
+    this.timerInterval = setInterval(() => {
+      html.innerHTML = this.textH1[i];
+      if (i === this.textH1.length - 1) {
+        i = 0;
+      }
+      i++;
+
+    }, 2500)
   }
 
   // Toujours utiliser public ou private pour les fonctions, variables , constantes ...
   // Si pas précisé, c'est public par défaut mais on s'expose à des soucis de lint
   // NOTE : Pour les appels depuis le html, mettre en public
   public windowScroll(): void {
+    const html = document.getElementById('navbar') ;
+    if (!html) return ;
     if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
-      // @ts-ignore
-      document.getElementById('navbar').style.backgroundColor = '#1a1a1a';
-      // @ts-ignore
-      document.getElementById('navbar').style.padding = '15px 0px';
+      html.style.backgroundColor = '#1a1a1a';
+      html.style.padding = '15px 0px';
     } else {
-      // @ts-ignore
-      document.getElementById('navbar').style.backgroundColor = '';
-      // @ts-ignore
-      document.getElementById('navbar').style.padding = '20px';
+      html.style.backgroundColor = '';
+      html.style.padding = '20px';
     }
   }
 
@@ -99,8 +116,9 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public toggleMenu(): void {
-    // @ts-ignore
-    document.getElementById('navbarCollapse').classList.toggle('show');
+    const collapse = document.getElementById('navbarCollapse');
+    if (!collapse) return;
+    collapse.classList.toggle('show');
   }
 
 
@@ -113,6 +131,8 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     // obligatoire si implements OnDestroy (qui est facultatif)
     // Important : Si on a souscrit à des abonnements, se désabonner ici pour éviter les fuites de mémoires
     // D'autres existent, voir https://angular.io/guide/lifecycle-hooks
+
+    clearInterval(this.timerInterval);
   }
 
 }
