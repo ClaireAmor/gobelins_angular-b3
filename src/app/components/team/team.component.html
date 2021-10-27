@@ -22,7 +22,7 @@
             <p class="fw-bold mb-0 mt-4">{{item.name}}</p>
             <p class="text-muted mt-4">{{item.text}}</p>
           </div>
-          <app-icons [iconList]="item.links"></app-icons>
+          <app-icons *ngIf="toogleSocialLinks" [iconList]="item.links"></app-icons>
         </div>
       </div>
     </div>

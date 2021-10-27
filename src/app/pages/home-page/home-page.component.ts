@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
+import {NavModel} from "../../models/nav.model";
 
 @Component({
   selector: 'home-page', //selecteur html pour appeler le compo
@@ -11,53 +12,97 @@ import {DOCUMENT} from "@angular/common";
 // HomePageComponent convention de nommage PascalCase pour les noms de classe
 export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   timerInterval: any;
+  homeNavbarData: any;
+  toogleSocialLinks: boolean = true;
   monText1='Prince ali, oui c\'est bien lui Ali a baboua';
   textH1 = [
     'A genoux, prosternez vous, soyer ravis',
     'Pas de panique on se calme ! Criez vive Ali salam !',
     'Venez assister au plus grand spectacle de l\'Arabi !',
-    this.monText1,
+    this.monText1
   ];
 
-  homeNavbarData = [
-    {
-      name: "Home",
-      title: "home-page"
-    },
-    {
-      name: "Services",
-      title: "services"
-    },
-    {
-      name: "Features",
-      title: "features"
-    },
-    {
-      name: "Testimonial",
-      title: "testi"
-    },
-    {
-      name: "Team",
-      title: "team"
-    },
-    {
-      name: "Faq",
-      title: "faq"
-    },
-    {
-      name: "Pricing",
-      title: "pricing"
-    },
-    {
-      name: "Contact",
-      title: "contact"
-    },
-  ]
+  // homeNavbarData = [
+  //   {
+  //     name: "Home",
+  //     title: "home-page"
+  //   },
+  //   {
+  //     name: "Services",
+  //     title: "services"
+  //   },
+  //   {
+  //     name: "Features",
+  //     title: "features"
+  //   },
+  //   {
+  //     name: "Testimonial",
+  //     title: "testi"
+  //   },
+  //   {
+  //     name: "Team",
+  //     title: "team"
+  //   },
+  //   {
+  //     name: "Faq",
+  //     title: "faq"
+  //   },
+  //   {
+  //     name: "Pricing",
+  //     title: "pricing"
+  //   },
+  //   {
+  //     name: "Contact",
+  //     title: "contact"
+  //   },
+  // ]
 
   // variables et functions convention de nomage camelCase
   currentSection = 'home-page';
 
-  constructor(@Inject(DOCUMENT) private readonly document: Document) {
+  onEmitToggleSocialLinksEvent(event: boolean) {
+    console.log(event)
+    this.toogleSocialLinks = event;
+    this.changeDetectorRef.detectChanges();
+
+  }
+  constructor(@Inject(DOCUMENT) private readonly document: Document,
+              private readonly changeDetectorRef: ChangeDetectorRef) {
+
+    this.homeNavbarData = [
+      new NavModel({
+        name: "Home",
+        title: "home-page"
+      }),
+      new NavModel({
+        name: "Services",
+        title: "services"
+      }),
+      new NavModel({
+        name: "Features",
+        title: "features"
+      }),
+      new NavModel({
+        name: "Testimonial",
+        title: "testi"
+      }),
+      new NavModel({
+        name: "Team",
+        title: "team"
+      }),
+      new NavModel({
+        name: "Faq",
+        title: "faq"
+      }),
+      new NavModel({
+        name: "Pricing",
+        title: "pricing"
+      }),
+      new NavModel({
+        name: "Contact",
+        title: "contact"
+      }),
+    ]
     // exécuté en premier !
 
     // exemple de log à checker dans la console du navigateur
@@ -81,8 +126,8 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.timerInterval = setInterval(() => {
       html.innerHTML = this.textH1[i];
-      if (i === this.textH1.length - 1) {
-        i = 0;
+      if (i === this.textH1.length -1) {
+        i = -1;
       }
       i++;
 
