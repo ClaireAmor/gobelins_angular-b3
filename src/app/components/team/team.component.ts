@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TeamMemberModel} from "../../models/team-member.model";
 import {TeamMemberLinksModel} from "../../models/team-member-links.model";
+import * as faker from "faker";
 
 @Component({
   selector: 'app-team',
@@ -15,10 +16,14 @@ export class TeamComponent implements OnInit{
   @Input() toogleSocialLinks : boolean;
 
   constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
+
+    console.log()
     this.teamMemberList = [
       new TeamMemberModel({
-        img: "../../../../../assets/images/team/team-3.png",
-        name: "@Donald Laughlin",
+        //img: "../../../../../assets/images/team/team-3.png",
+        img: faker.image.imageUrl(140,140,undefined, true, true),
+        name: "@" + faker.name.firstName(1) + " " + faker.name.lastName(),
+        //name: "@Donald Laughlin",
         text: "You want customer to your store. Easily your coupans and has Clooger.",
         links: new TeamMemberLinksModel({
           //github:'https://github.com/ClaireAmor',
